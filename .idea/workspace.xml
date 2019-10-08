@@ -2,6 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d45ff6a-255b-4594-9789-c27144829dc4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/politics-social-media-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firebase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/.scrutinizer.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/ruleset.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/src/firebaseError.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/src/firebaseInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/src/firebaseLib.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/src/firebaseStub.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/tests/firebaseStubTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/ktamas77/firebase-php/tests/firebaseTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -150,12 +183,12 @@
       <workItem from="1569635701125" duration="1502000" />
       <workItem from="1569690260261" duration="3802000" />
       <workItem from="1569803402866" duration="2266000" />
-      <workItem from="1570499438548" duration="170000" />
+      <workItem from="1570499438548" duration="220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8042000" />
+    <option name="totallyTimeSpent" value="8092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
