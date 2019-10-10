@@ -1,7 +1,7 @@
 <?php
 include_once('includes.php');
 
-function stripper($string ){
+function stripper($string ){//is nosql injection a thing? Do we need this?
     $res = preg_replace("/[^a-zA-Z]/", "", $string);
     return $res;
 }
@@ -12,7 +12,6 @@ function createAccount($username, $password, $userid, &$firebase) {
         'password' => $password,
         'userid' => $userid
     ];
-    print_r($user);
     $firebase->set('Logins/' . $username, $user);
 }
 
@@ -23,7 +22,6 @@ function getAllLogins(&$firebase) {
 function userExist(&$firebase, $username) {
     $logins = getAllLogins($firebase);
     foreach($logins as $key => $value) {
-        //print_r($key);
         if($username == strval($key)) {
             return true;
         }
@@ -31,7 +29,7 @@ function userExist(&$firebase, $username) {
     return false;
 }
 
-function genUserid() {
+function genid() {
     return ((date('H')+9)*(date('s')+4)*7);
 }
 
@@ -41,4 +39,21 @@ function verifyPassword(&$firebase, $username, $password) {
     }else {
         return false;
     }
+}
+
+function getCurrentDate() {
+    return date("d-m-Y H-i-s");
+}
+
+function submitPost(&$firebase, $username, $post) {
+    $fpost = [
+        'username' => $username,
+        'post' => $post,
+        'date' => getCurrentDate()
+    ];
+    $firebase->set('Posts/' . $username . '/' . genid(), $fpost);
+}
+
+function getAllPosts(&$firebase, $user) {
+    return json_decode($firebase->get('Posts/' . $user), true);
 }

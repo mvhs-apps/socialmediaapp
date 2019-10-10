@@ -3,6 +3,7 @@
 include('firebase.php');
 include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
+session_start();
 ?>
 <html>
 <head>
@@ -27,7 +28,7 @@ $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
             $username = stripper($_POST["username"]);
             $password = stripper($_POST["password"]);
             if(!userExist($firebase, $username)) {
-                createAccount($username, $password, genUserid(), $firebase);
+                createAccount($username, $password, genid(), $firebase);
                 echo "Account Creation Successsful";
             }else {
                 echo "Username Already Taken";
@@ -42,7 +43,8 @@ $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
                 echo "Login Failed: Username doesn't exist";
             }else {
                 if(verifyPassword($firebase, $username, $password)) {
-                    header("Location: http://localhost/politics-social-media-app/home.php");
+                    $_SESSION["user"] = $username;
+                    header("Location: http://localhost/socialmediaapp/home.php");
                 }else {
                     echo "Login Failed: Incorrect Password";
                 }
