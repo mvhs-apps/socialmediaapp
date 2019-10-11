@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include('firebase.php');
+include('navbar.php');
 include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();

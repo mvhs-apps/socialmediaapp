@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include('firebase.php');
+include('navbar.php');
 include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
@@ -12,7 +13,10 @@ if($user == "invalid") {
 <html>
 <head></head>
 <body>
-    <h1>Welcome <?php echo $user; ?></h1>
+    <h1 class="alert alert-warning alert-dismissible fade show" role="alert">Welcome, <strong><?php echo $user; ?></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div></h1>
 
     <form action="home.php" method="POST">
         <input name="logout" type="submit" value="logout"/>
@@ -27,7 +31,7 @@ if($user == "invalid") {
     <form action="home.php" method="POST">
         <h3>Make a post</h3>
         <textarea name="post">Write your post here:</textarea>
-        <input type="submit" value="Trix it" name="submit2"/>//Change this plz
+        <input type="submit" value="Post!" name="submit2"/> 
     </form>
     <?php
         if(isset($_POST["submit2"])) {
@@ -45,10 +49,12 @@ if($user == "invalid") {
                 echo "Date: " . $value["date"];
                 echo "<br/>Post: " . $value["post"];
                 echo "<br/><br/>";//Plz css this
+
+                $date = $value["date"];
+                $Post = $value["post"];
+
             }
         } else {
             echo "You have no posts yet!";
         }
     ?>
-</body>
-</html>
