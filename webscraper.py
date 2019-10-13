@@ -16,20 +16,19 @@ soup = bs4.BeautifulSoup(politicoRes.text, "html.parser")
 links = {}
 links['politico'] = []
 
-
-for ana in soup.findAll('a'):
+for ana in soup.findAll('a'): 
     if ana.parent.name == 'h1':
-        download_url = ana['href']
-        print(ana['href'])
-        links['politico'].append({
-        'link': download_url,
-        'head': ana.text
-        })
-    time.sleep(1)
-    
-
- 
-
+        if(len(links['politico']) < 20):
+            download_url = ana['href']
+            print(ana['href'])
+            links['politico'].append({
+            'link': download_url,
+            'head': ana.text
+            })
+            time.sleep(1)
+        else:
+            print("finished")
+        
 
 with open('data.txt', 'w') as outfile:
     json.dump(links, outfile)
