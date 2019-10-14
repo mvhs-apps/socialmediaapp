@@ -31,7 +31,7 @@ if($user == "invalid") {
     </form>
     <?php
         if(isset($_POST["submit2"])) {
-            $post = stripper($_POST["post"]);
+            $post = $_POST["post"];
             submitPost($firebase, $user, $post);
         }
     ?>
