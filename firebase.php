@@ -1,8 +1,8 @@
 <?php
 include_once('includes.php');
 
-function stripper($string ){//is nosql injection a thing? Do we need this?
-    $res = preg_replace("/[^a-zA-Z]/", "", $string);
+function stripper($string ){//is nosql injection a thing? Do we need this? A little overzealous ==> no spaces or punctuation
+    $res = preg_replace("/[^a-zA-Z ]/", "", $string);
     return $res;
 }
 
