@@ -11,7 +11,10 @@ if($user == "invalid") {
 }
 ?>
 <html>
-<head></head>
+<head>
+    <link href="posting.css" rel="stylesheet">
+    <link href="form.css" rel="stylesheet">
+</head>
 <body>
     <h1 class="alert alert-warning alert-dismissible fade show" role="alert">Welcome, <strong><?php echo $user; ?></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -29,8 +32,8 @@ if($user == "invalid") {
     ?>
 
     <form action="home.php" method="POST">
-        <h3>Make a post</h3>
-        <textarea name="post">Write your post here:</textarea>
+        <h3>New Post:</h3>
+        <textarea name="post" placeholder="Post here:"></textarea>
         <input type="submit" value="Post!" name="submit2"/> 
     </form>
     <?php
@@ -40,21 +43,30 @@ if($user == "invalid") {
         }
     ?>
 
-    <h1>Your Posts:</h1>
+    <h3>Your Posts:</h3>
+    <div class="container-fluid grid">
     <?php
         $posts = getAllPosts($firebase, $user);
         if(!empty($posts)) {
             //print_r($posts);
             foreach($posts as $key => $value) {
-                echo "Date: " . $value["date"];
-                echo "<br/>Post: " . $value["post"];
-                echo "<br/><br/>";//Plz css this
+                //echo "Date: " . $value["date"];
+                //echo "<br/>Post: " . $value["post"];
+                //echo "<br/><br/>";//Plz css this
 
                 $date = $value["date"];
                 $Post = $value["post"];
+
+                echo "
+                    <div class='posting'>
+                        <span>Posted $date</span>
+                        <span class='posting-content'>$Post</span>
+                    </div>
+                ";
 
             }
         } else {
             echo "You have no posts yet!";
         }
     ?>
+    </div>
