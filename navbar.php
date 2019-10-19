@@ -48,9 +48,9 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">My Account</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" href="profile.php">Profile</a>
+          <a class="dropdown-item" href="settings.php">Settings</a>
+          <a class="dropdown-item" href="index.php">Log Out</a>
         </div>
       </li>
 
