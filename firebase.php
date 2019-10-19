@@ -42,7 +42,7 @@ function verifyPassword(&$firebase, $username, $password) {
 }
 
 function getCurrentDate() {
-    return date("d-m-Y H-i-s");
+    return date("d-m-y h:i A");
 }
 
 function submitPost(&$firebase, $username, $post) {
