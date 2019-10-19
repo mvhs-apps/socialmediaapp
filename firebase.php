@@ -7,9 +7,12 @@ function stripper($string ){//is nosql injection a thing? Do we need this?
 }
 
 function createAccount($username, $password, $userid, &$firebase) {
+    // https://www.php.net/manual/en/function.password-hash.php
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    echo $hash;
     $user = [
         'username' => $username,
-        'password' => $password,
+        'password' => $hash,
         'userid' => $userid
     ];
     $firebase->set('Logins/' . $username, $user);
@@ -34,7 +37,10 @@ function genid() {
 }
 
 function verifyPassword(&$firebase, $username, $password) {
-    if(stripper(strval($firebase->get('Logins/' . $username . '/password'))) == strval($password)) {
+    $hash = strval(
+            $firebase->get('Logins/' . $username . '/password'));
+    $hash = trim($hash, '"');
+    if(password_verify(strval($password), $hash)) {
         return true;
     }else {
         return false;
