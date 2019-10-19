@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include('firebase.php');
+include('navbar.php');
 include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
@@ -44,7 +45,7 @@ session_start();
             }else {
                 if(verifyPassword($firebase, $username, $password)) {
                     $_SESSION["user"] = $username;
-                    header("Location: http://localhost/socialmediaapp/home.php");
+                    header("Location: home.php");
                 }else {
                     echo "Login Failed: Incorrect Password";
                 }

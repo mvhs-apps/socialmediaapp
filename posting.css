@@ -1,0 +1,21 @@
+.posting{
+    display:grid;
+    padding:0.5em 0.3em;
+    grid-gap:0.2em;
+    color: #666;
+}
+
+.posting:nth-child(odd){
+    background-color: #eee;
+}
+
+.posting-content{
+    font-size:1.3em;
+    margin-left: 1.5em;
+    margin-right: 1em;
+    color: black;
+}
+
+.posting-container{
+    display:grid;
+}
