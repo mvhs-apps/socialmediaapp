@@ -13,7 +13,6 @@ if($user == "invalid") {
 <html>
 <head>
     <link href="posting.css" rel="stylesheet">
-    <link href="form.css" rel="stylesheet">
 </head>
 <body>
     <h1 class="alert alert-warning alert-dismissible fade show" role="alert">Welcome, <strong><?php echo $user; ?></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -44,8 +43,9 @@ if($user == "invalid") {
     ?>
 
     <h3>Your Posts:</h3>
-    <div class="container-fluid grid">
+    <div class="posting-container grid">
     <?php
+        // Maybe put post getter in another path/file, and have JavaScript retrieve it
         $posts = getAllPosts($firebase, $user);
         if(!empty($posts)) {
             //print_r($posts);
