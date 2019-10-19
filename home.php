@@ -7,7 +7,7 @@ $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
 $user = stripper($_SESSION["user"]);
 if($user == "invalid") {
-    header("Location: http://localhost/socialmediaapp/index.php");
+    header("Location: index.php");
 }
 ?>
 <html>
@@ -27,7 +27,7 @@ if($user == "invalid") {
     <?php
         if(isset($_POST["logout"])) {
             $_SESSION["user"] = "invalid";
-            header("Location: http://localhost/socialmediaapp/index.php");
+            header("Location: index.php");
         }
     ?>
 
