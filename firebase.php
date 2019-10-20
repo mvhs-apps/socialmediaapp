@@ -41,6 +41,10 @@ function verifyPassword(&$firebase, $username, $password) {
             $firebase->get('Logins/' . $username . '/password'));
     $hash = trim($hash, '"');
     if(password_verify(strval($password), $hash)) {
+        if(password_needs_rehash($hash, PASSWORD_DEFAULT)){
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $firebase->set("Logins/$username/password", $hash);
+        }
         return true;
     }else {
         return false;
