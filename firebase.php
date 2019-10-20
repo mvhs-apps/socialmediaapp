@@ -40,10 +40,15 @@ function verifyPassword(&$firebase, $username, $password) {
     $hash = strval(
             $firebase->get('Logins/' . $username . '/password'));
     $hash = trim($hash, '"');
+    if(stripper($hash) == $password && password_needs_rehash($hash, PASSWORD_DEFAULT)){ // if pasword is stored as plaintext
+        $firebase->set("Logins/$username/password", password_hash($password, PASSWORD_DEFAULT));
+        return true;
+    }
+
     if(password_verify(strval($password), $hash)) {
         if(password_needs_rehash($hash, PASSWORD_DEFAULT)){
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $firebase->set("Logins/$username/password", $hash);
+            $firebase->set("Logins/$username/password", $hash); // update password if the cost is too low ==> too easy to break
         }
         return true;
     }else {
