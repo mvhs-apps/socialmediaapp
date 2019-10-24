@@ -50,9 +50,6 @@ if($user == "invalid") {
         if(!empty($posts)) {
             //print_r($posts);
             foreach($posts as $key => $value) {
-                //echo "Date: " . $value["date"];
-                //echo "<br/>Post: " . $value["post"];
-                //echo "<br/><br/>";//Plz css this
 
                 $date = $value["date"];
                 $Post = $value["post"];
@@ -61,12 +58,20 @@ if($user == "invalid") {
                     <div class='posting'>
                         <span>Posted $date</span>
                         <span class='posting-content'>$Post</span>
+                        <form action='home.php' method='POST'>
+                            <input type='hidden' name='whichpost' value='$key'/>
+                            <input type='submit' name='remove' value='Remove this post'/>
+                        </form>
                     </div>
                 ";
 
             }
         } else {
             echo "You have no posts yet!";
+        }
+        if(isset($_POST["remove"])) {
+            $num = preg_replace('/[^0-9]/', '', $_POST["whichpost"]);
+            removePost($firebase, $num, $user);
         }
     ?>
     </div>
