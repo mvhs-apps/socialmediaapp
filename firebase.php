@@ -57,3 +57,8 @@ function submitPost(&$firebase, $username, $post) {
 function getAllPosts(&$firebase, $user) {
     return json_decode($firebase->get('Posts/' . $user), true);
 }
+
+function readData($file) {
+    $json = fopen($file, "r") or die("Unable to open file!");
+    return json_decode(fread($json,filesize('data.txt')), true);
+}
