@@ -72,3 +72,7 @@ function submitPost(&$firebase, $username, $post) {
 function getAllPosts(&$firebase, $user) {
     return json_decode($firebase->get('Posts/' . $user), true);
 }
+
+function removePost(&$firebase, $num, $user) {
+    $firebase->delete("Posts/$user/$num");
+}
