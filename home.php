@@ -6,7 +6,7 @@ include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
 $user = stripper($_SESSION["user"]);
-if($user == "invalid") {
+if($user == "invalid" || !isset($user) || $user == "") {
     header("Location: index.php");
 }
 ?>
