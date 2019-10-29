@@ -53,6 +53,7 @@ if($user == "invalid" || !isset($user) || $user == "") {
 
                 $date = $value["date"];
                 $Post = $value["post"];
+                $Post = htmlentities($Post, ENT_QUOTES); // prevent html injection
 
                 echo "
                     <div class='posting'>
