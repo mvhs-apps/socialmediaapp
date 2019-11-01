@@ -18,22 +18,6 @@ if($user == "invalid") {
   </button>
 </div></h1>
 
-    <?php
-        //$command = escapeshellcmd('python webscraper.py');
-        //shell_exec($command);
-        $jsonn = readData('data.txt');
-        $politico = $jsonn["politico"];
-        for($i = 1; $i < sizeof($politico); $i++) {
-            echo "<div>";
-            echo "<a href='";
-            echo $politico[$i]["link"];
-            echo "'>Link</a>";
-            echo "<div>";
-            echo $politico[$i]["head"];
-            echo "</div></div>";
-        }
-    ?>
-
     <form action="home.php" method="POST">
         <input name="logout" type="submit" value="logout"/>
     </form>

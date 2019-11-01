@@ -10,28 +10,41 @@ if($user == "invalid") {
 }
 ?>
 
-<!-- Card -->
-<div class="card">
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
 
-<!-- Card image -->
-<div class="view overlay">
-  <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-  <a href="#!">
-    <div class="mask rgba-white-slight"></div>
-  </a>
+<?php
+//$command = escapeshellcmd('python webscraper.py');
+//shell_exec($command);
+$jsonn = readData('data.txt');
+$politico = $jsonn["politico"];
+for($i = 1; $i < sizeof($politico); $i++) {
+    $link = $politico[$i]["link"];
+    echo "<!-- Card -->
+    <div class=\"card\">
+
+    <!-- Card image -->
+    <div class=\"view overlay\">
+        <img class=\"card-img-top\" src=\"https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg\" alt=\"Card image cap\">
+        <a href='$link'>
+    <div class=\"mask rgba-white-slight\"></div>
+        </a>
+    </div>
+
+    <!-- Card content -->
+    <div class=\"card-body\">
+
+    <!-- Title -->
+    <a href='$link'><h4 class=\"card-title\">";
+    echo $politico[$i]["head"];
+    echo "</a></h4></div>
+
 </div>
+<!-- Card -->";
+}
+?>
+<body>
 
-<!-- Card content -->
-<div class="card-body">
-
-  <!-- Title -->
-  <h4 class="card-title">Card title</h4>
-  <!-- Text -->
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <!-- Button -->
-  <a href="#" class="btn btn-primary">Button</a>
-
-</div>
-
-</div>
-<!-- Card -->
+</html>
