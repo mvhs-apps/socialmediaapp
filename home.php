@@ -45,7 +45,11 @@ if($user == "invalid" || !isset($user) || $user == "") {
     <h3>Your Posts:</h3>
     <div class="posting-container grid">
     <?php
-        // Maybe put post getter in another path/file, and have JavaScript retrieve it
+        if(isset($_POST["remove"])) {
+            $num = preg_replace('/[^0-9]/', '', $_POST["whichpost"]);
+            removePost($firebase, $num, $user);
+        }
+
         $posts = getAllPosts($firebase, $user);
         if(!empty($posts)) {
             //print_r($posts);
@@ -69,10 +73,6 @@ if($user == "invalid" || !isset($user) || $user == "") {
             }
         } else {
             echo "You have no posts yet!";
-        }
-        if(isset($_POST["remove"])) {
-            $num = preg_replace('/[^0-9]/', '', $_POST["whichpost"]);
-            removePost($firebase, $num, $user);
         }
     ?>
     </div>
