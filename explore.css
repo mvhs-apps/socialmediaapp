@@ -1,0 +1,36 @@
+.card-grid{
+    --columns: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    padding-top: 0.5em;
+    padding-bottom: 0.8em;
+    grid-gap: 0.8em;
+}
+
+.full-width{
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 576px) { 
+    .card-grid{
+        --columns: 2;
+    }
+}
+
+@media (min-width: 768px) { 
+    .card-grid{
+        --columns: 3;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-grid{
+        --columns: 4;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-grid{
+        --columns: 5;
+    }
+}
