@@ -61,7 +61,7 @@ if($user == "invalid" || !isset($user) || $user == "") {
                         <span class='posting-content'>$Post</span>
                         <form action='home.php' method='POST'>
                             <input type='hidden' name='whichpost' value='$key'/>
-                            <input type='submit' name='remove' value='Remove this post'/>
+                            <input class='btn btn-danger btn-sm btn-block' type='submit' name='remove' value='Remove this post'/>
                         </form>
                     </div>
                 ";
