@@ -76,3 +76,8 @@ function getAllPosts(&$firebase, $user) {
 function removePost(&$firebase, $num, $user) {
     $firebase->delete("Posts/$user/$num");
 }
+
+function readData($file) {
+    $json = fopen($file, "r") or die("Unable to open file!");
+    return json_decode(fread($json,filesize('data.txt')), true);
+}

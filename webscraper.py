@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import requests
 import urllib.request
 import time
@@ -25,7 +26,7 @@ for ana in soup.findAll('a'):
             'link': download_url,
             'head': ana.text
             })
-            time.sleep(1)
+            time.sleep(0.01)
         else:
             print("finished")
         
