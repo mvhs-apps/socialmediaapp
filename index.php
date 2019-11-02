@@ -45,7 +45,7 @@ session_start();
             }else {
                 if(verifyPassword($firebase, $username, $password)) {
                     $_SESSION["user"] = $username;
-                    header("Location: http://localhost/socialmediaapp/home.php");
+                    header("Location: home.php");
                 }else {
                     echo "Login Failed: Incorrect Password";
                 }
