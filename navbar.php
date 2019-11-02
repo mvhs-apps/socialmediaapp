@@ -32,15 +32,12 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home
+        <a class="nav-link" href="home.php">Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Explore</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Help</a>
+        <a class="nav-link" href="explore.php">Explore</a>
       </li>
 
       <!-- Dropdown -->
@@ -50,7 +47,15 @@
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">Profile</a>
           <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" href="#" onclick="
+            let formData = new FormData();
+            formData.append('logout', 'logout');
+            fetch('home.php', {
+              method: 'POST', // *GET, POST, PUT, DELETE, etc.
+              body: formData,
+            });
+            location.reload()
+          ">Log Out</a>
         </div>
       </li>
 
