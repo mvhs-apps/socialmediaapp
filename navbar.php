@@ -67,3 +67,12 @@
 
 </nav>
 <!--/.Navbar-->
+
+<?php 
+
+if(isset($_POST["logout"]) or isset($_GET["logout"])){
+  $_SESSION["user"] = "invalid";
+  header("Location: index.php");
+}
+
+?>
