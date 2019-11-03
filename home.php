@@ -13,6 +13,7 @@ if($user == "invalid" || !isset($user) || $user == "") {
 <html>
 <head>
     <link href="posting.css" rel="stylesheet">
+    <link href="general.css" rel="stylesheet">
 </head>
 <body>
     <h1 class="alert alert-warning alert-dismissible fade show" role="alert">Welcome, <strong><?php echo $user; ?></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -31,7 +32,7 @@ if($user == "invalid" || !isset($user) || $user == "") {
     ?>
 
     <form action="home.php" method="POST">
-        <h3>New Post:</h3>
+        <h3 class="full-width">New Post:</h3>
         <textarea name="post" placeholder="Post here:"></textarea>
         <input type="submit" value="Post!" name="submit2"/> 
     </form>
@@ -42,7 +43,7 @@ if($user == "invalid" || !isset($user) || $user == "") {
         }
     ?>
 
-    <h3>Your Posts:</h3>
+    <h3 class="full-width">Your Posts:</h3>
     <div class="posting-container grid">
     <?php
         // Maybe put post getter in another path/file, and have JavaScript retrieve it
