@@ -6,13 +6,13 @@ $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
 $user = stripper($_SESSION["user"]);
 if($user != "admin") {
-    header("Location: http://localhost/socialmediaapp/index.php");
+    header("Location: hom6e.php");
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-
+    <link href="general.css" rel="stylesheet">
 </head>
 <body>
 <head>
@@ -21,7 +21,7 @@ if($user != "admin") {
 <?php
 $users = getAllLogins($firebase);
 foreach($users as $k => $v) {
-    echo "<h3>$k Posts:</h3>
+    echo "<h3 class='full-width'>\"$k\" Posts:</h3>
     <div class=\"posting-container grid\">";
     $posts = getAllPosts($firebase, $k);
     if(!empty($posts)) {
