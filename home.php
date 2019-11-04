@@ -15,10 +15,10 @@ if($user == "invalid" || !isset($user) || $user == "") {
     <link href="posting.css" rel="stylesheet">
 </head>
 <body>
-    <h1 class="alert alert-info alert-dismissible fade show" role="alert">Welcome, <strong><?php echo $user; ?></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <h4 class="alert alert-info alert-dismissible fade show" role="alert">Welcome, <strong><?php echo $user; ?></strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div></h1>
+</div></h4>
 
     <form action="home.php" method="POST">
         <input name="logout" type="submit" value="logout"/>
