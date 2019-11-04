@@ -15,7 +15,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
 
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark green">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#444999">
 
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">PoliTrix</a>
