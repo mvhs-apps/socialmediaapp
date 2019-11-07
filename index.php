@@ -24,15 +24,23 @@ session_start();
         Password: <input type="password" name="logpassword"/>
         <input type="submit" name="submitLog"/>
     </form>
+    
     <?php
+        function showAlert($content, $type = "info"){
+            echo "<h4 class=\"alert alert-$type alert-dismissible fade show\" role=\"alert\">$content<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></h4>";
+        }
         if(isset($_POST["submitReg"])) {
             $username = stripper($_POST["username"]);
             $password = stripper($_POST["password"]);
             if(!userExist($firebase, $username)) {
-                createAccount($username, $password, genid(), $firebase);
-                echo "Account Creation Successsful";
+                $result = createAccount($username, $password, genid(), $firebase);
+                if(!empty($result)){
+                    echo showAlert("Account Creation Successsful", "sucess");
+                }else {
+                    echo showAlert("Account Creation Failure", "danger");
+                }
             }else {
-                echo "Username Already Taken";
+                echo showAlert("Username Already Taken", "danger");
             }
 
         }
@@ -41,13 +49,13 @@ session_start();
             $username = stripper($_POST["logusername"]);
             $password = stripper($_POST["logpassword"]);
             if(!userExist($firebase, $username)) {
-                echo "Login Failed: Username doesn't exist";
+                echo showAlert("Login Failed: Username doesn't exist", "warning");
             }else {
                 if(verifyPassword($firebase, $username, $password)) {
                     $_SESSION["user"] = $username;
                     header("Location: home.php");
                 }else {
-                    echo "Login Failed: Incorrect Password";
+                    echo showAlert("Login Failed: Incorrect Password", "warning");
                 }
             }
         }
