@@ -27,7 +27,7 @@ session_start();
     
     <?php
         function showAlert($content, $type = "info"){
-            echo "<h4 class=\"alert alert-$type alert-dismissible fade show\" role=\"alert\">$content<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></h4>";
+            echo "<h5 class=\"alert alert-$type alert-dismissible fade show\" role=\"alert\">$content<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></h5>";
         }
         if(isset($_POST["submitReg"])) {
             $username = stripper($_POST["username"]);
