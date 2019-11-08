@@ -8,6 +8,9 @@ function stripper($string ){//is nosql injection a thing? Do we need this? A lit
 
 function createAccount($username, $password, $userid, &$firebase) {
     // https://www.php.net/manual/en/function.password-hash.php
+    if(empty($username)){
+        return null;
+    }
     $hash = password_hash($password, PASSWORD_DEFAULT);
     echo $hash;
     $user = [
@@ -16,6 +19,7 @@ function createAccount($username, $password, $userid, &$firebase) {
         'userid' => $userid
     ];
     $firebase->set('Logins/' . $username, $user);
+    return $user;
 }
 
 function getAllLogins(&$firebase) {
