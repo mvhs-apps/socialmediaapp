@@ -8,18 +8,18 @@ session_start();
 ?>
 <html>
 <head>
-
+    <link href="general.css" rel="stylesheet">
 </head>
 
 <body>
     <form action="index.php" method="post">
-        <h1>Register</h1>
+        <h1 class="full-width">Register</h1>
         Username: <input type="text" name="username"/>
         Password: <input type="password" name="password"/>
         <input type="submit" name="submitReg"/>
     </form>
     <form action="index.php" method="post">
-        <h1>Login</h1>
+        <h1 class="full-width">Login</h1>
         Username: <input type="text" name="logusername"/>
         Password: <input type="password" name="logpassword"/>
         <input type="submit" name="submitLog"/>
