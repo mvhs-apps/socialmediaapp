@@ -21,13 +21,13 @@ if($user == "invalid" || !isset($user) || $user == "") {
 <?php
 //$command = escapeshellcmd('python webscraper.py');
 //shell_exec($command);
-$jsonn = readData('data.txt');
-foreach($jsonn as $site => $list){
-    echo "<h2 class='m-2 my-3 full-width'>" . ucwords($site) . "</h2>";
-    foreach($list as $item){
-        $link = $item["link"];
-        echo "<!-- Card -->
-        <div class='card'>
+            $jsonn = readData('data.json');
+            foreach($jsonn as $site => $list){
+                echo "<h2 class='m-2 my-3 full-width'>" . ucwords($site) . "</h2>";
+                foreach($list as $item){
+                    $link = $item["link"];
+                    echo "<!-- Card -->
+                    <div class='card'>
 
             <!-- Card image -->
             <div class='view overlay'>

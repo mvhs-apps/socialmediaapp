@@ -1,0 +1,8 @@
+{
+    "image": "(optional) (a url) user icon or stock user post image or image from webscraper",
+    "link": "(optional)",
+    "date": "(required) 02-11-19 07:27 AM",
+    "user": "(optional) user ascociated with the posting or a 'bot' user for the webscraper",
+    "head": "(optional) header",
+    "body": "posting body or a snippet of the article"
+}

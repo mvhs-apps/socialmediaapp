@@ -66,8 +66,11 @@ function getCurrentDate() {
 
 function submitPost(&$firebase, $username, $post) {
     $fpost = [
-        'username' => $username,
-        'post' => $post,
+        'image' => null,
+        'link' => null,
+        'head' => null,
+        'user' => $username,
+        'body' => $post,
         'date' => getCurrentDate()
     ];
     $firebase->set('Posts/' . $username . '/' . genid(), $fpost);
@@ -83,5 +86,5 @@ function removePost(&$firebase, $num, $user) {
 
 function readData($file) {
     $json = fopen($file, "r") or die("Unable to open file!");
-    return json_decode(fread($json,filesize('data.txt')), true);
+    return json_decode(fread($json,filesize($file)), true);
 }
