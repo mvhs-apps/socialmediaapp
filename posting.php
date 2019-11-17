@@ -16,7 +16,7 @@ function postings($posts, $user, &$firebase){
         //print_r($posts);
         foreach($posts as $key => $value) {
             # -- get fields from post --
-            $image = readByKey("image", $value, "https://loremflickr.com/900/800"); #https://loremflickr.com/640/360
+            $image = readByKey("image", $value, "https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg");
 
             $date = readByKey("date", $value);
             
