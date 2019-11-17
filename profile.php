@@ -18,30 +18,27 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
     <head>
         <link href="posting.css" rel="stylesheet">
         <link href="general.css" rel="stylesheet">
-        <link href="card.css" rel="stylesheet">
     </head>
     <body>
         <?php 
             include('navbar.php');
         ?>
-        <h4 class="alert alert-info alert-dismissible fade show" role="alert">
-            Welcome, <strong><?php echo getUserData($firebase, $user)["displayName"]; ?></strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </h4>
         <div class="content">
-
-            <form action="home.php" method="POST">
-                <h3 class="full-width">New Post:</h3>
-                <textarea name="post" placeholder="Post here:"></textarea>
-                <input type="submit" value="Post!" name="submit"/> 
-            </form>
-            <?php
-                if(isset($_POST["submit"])) {
-                    $post = $_POST["post"];
-                    submitPost($firebase, $user, $post);
+            <?php 
+                if(isSet($_POST["displayName"])){
+                    $data = [
+                        "displayName" => stripper($_POST["displayName"])
+                    ];
+                    $firebase->update('Logins/' . $user , $data);
                 }
+                $userData = getUserData($firebase, $user);
             ?>
-
+            <form class="full-width py-2" action='profile.php' method='POST'>
+                <h3>Update Your Profile:</h3>
+                Display Name:<br/>
+                <input type="text" name="displayName" value="<?php echo $userData["displayName"] ?>" />
+                <input class='btn btn-primary btn-sm btn-block' type='submit' name='update' value='Save'/>
+            </form>
             <h3 class="full-width">Your Posts:</h3>
             <div class="posting-container grid">
             <?php
@@ -50,13 +47,13 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
                     removePost($firebase, $num, $user);
                 }
 
-                include("feed.php");
                 include("posting.php");
 
                 $posts = getAllPosts($firebase, $user);
                 postings($posts, $user, $firebase);
                 if(empty($posts)){
-                    echo "Your feed is empty";
+                    echo "You have no posts yet!<br>";
+                    echo "Your posts will show up here";
                 }
             ?>
             </div>

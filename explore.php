@@ -1,58 +1,50 @@
+<!DOCTYPE html>
 <?php
 include('firebase.php');
-include('navbar.php');
 include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
+if(!isset($_SESSION["user"])){
+    $_SESSION["user"] = "invalid";
+    header("Location: index.php");
+}
 $user = stripper($_SESSION["user"]);
-if($user == "invalid" || !isset($user) || $user == "") {
+if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
+    $_SESSION["user"] = "invalid";
     header("Location: index.php");
 }
 ?>
-
-<!DOCTYPE html>
 <html>
-<head>
-    <link href="explore.css" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <link href="general.css" rel="stylesheet">
+        <link href="posting.css" rel="stylesheet">
+    </head>
+    <body>
+        <?php 
+            include('navbar.php');
+        ?>
+        <div class="content">
+            <h3 class="full-width">News:</h3>
+            <div class="posting-container grid">
+            <?php
+                if(isset($_POST["remove"])) {
+                    $num = preg_replace('/[^0-9]/', '', $_POST["whichpost"]);
+                    removePost($firebase, $num, $user);
+                }
 
-<div class='px-2 card-grid'>
-<?php
-//$command = escapeshellcmd('python webscraper.py');
-//shell_exec($command);
-            $jsonn = readData('data.json');
-            foreach($jsonn as $site => $list){
-                echo "<h2 class='m-2 my-3 full-width'>" . ucwords($site) . "</h2>";
-                foreach($list as $item){
-                    $link = $item["link"];
-                    echo "<!-- Card -->
-                    <div class='card'>
-
-            <!-- Card image -->
-            <div class='view overlay'>
-                <img class='card-img-top' src='https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg' alt='Card image cap'>
-                <a href='$link'>
-            <div class='mask rgba-white-slight'></div>
-                </a>
+                include("posting.php");
+                $posts = readData('data.json');
+                sort($posts);
+                if(!empty($posts)) {
+                    foreach($posts as $key => $site){
+                        postings($site, $user, $firebase);
+                    }
+                } else {
+                    echo "You have no posts yet!<br>";
+                    echo "Your posts will show up here";
+                }
+            ?>
             </div>
-
-            <!-- Card content -->
-            <div class='card-body'>
-
-            <!-- Title -->
-            <a href='$link'><h4 class='card-title'>
-            {$item["head"]}
-            </a></h4></div>
-
         </div>
-        <!-- Card -->";
-    }
-}
-?>
-
-</div>
-
-<body>
-
-</html>
+    <body>
+<html>

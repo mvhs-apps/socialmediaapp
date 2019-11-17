@@ -3,3 +3,12 @@
     width:100%;
     margin: 0 0.4em;
 }
+
+/*body{
+    
+}*/
+
+.content{
+    display:grid;
+    margin-top: 0.2em;
+}
