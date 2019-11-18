@@ -66,7 +66,7 @@
 
 @media (max-width: 576px) { 
     .posting{
-        grid-template-areas: "img content" "foot foot";
+        grid-template-areas: "img content" "img foot";
     }
 }
 
