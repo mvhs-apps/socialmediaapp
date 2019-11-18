@@ -38,7 +38,19 @@ function postings($posts, $user, &$firebase){
             if($username == $user){
                 $userUrl = "profile.php";
             }
-            $postedText = "Posted by <a href='$userUrl'>$displayName</a> <wbr>on $date";
+
+            $userText = "by <a href='$userUrl'>$displayName</a>";
+            if(empty($userText)){
+                $userText = "";
+            }
+            $dateText = " <wbr>on $date";
+            if(empty($dateText)){
+                $dateText = "";
+            }
+            $postedText = "Posted $userText $dateText";
+            if(!$username && !$date){
+                $postedText = "";
+            }
 
             $deleteForm = "<form class='remove' action='home.php' method='POST'>
                 <input type='hidden' name='whichpost' value='$key'/>
