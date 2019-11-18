@@ -11,6 +11,11 @@
     position:relative;
 }
 
+.posting:hover{
+    box-shadow: -6px 3px 5px #ccc;
+    background-color:green;
+}
+
 .posting-body{
     padding:0.5em 0.3em;
     font-size:0.8em;

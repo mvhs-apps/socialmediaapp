@@ -1,6 +1,6 @@
 .full-width{
     grid-column: 1 / -1;
-    width:100%;
+    width: calc(100% - 0.8em);
     margin: 0 0.4em;
 }
 
@@ -12,3 +12,9 @@
     display:grid;
     margin-top: 0.2em;
 }
+
+/*
+.waves-input-wrapper{
+    grid-column: 1 / -1;
+    width: calc(100% - 0.4em);
+}*/

@@ -18,7 +18,6 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
     <head>
         <link href="posting.css" rel="stylesheet">
         <link href="general.css" rel="stylesheet">
-        <link href="card.css" rel="stylesheet">
     </head>
     <body>
         <?php 
@@ -32,8 +31,8 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
 
             <form action="home.php" method="POST">
                 <h3 class="full-width">New Post:</h3>
-                <textarea name="post" placeholder="Post here:"></textarea>
-                <input type="submit" value="Post!" name="submit"/> 
+                <textarea class="full-width" name="post" placeholder="Post here:"></textarea>
+                <input class='butt btn btn-primary btn-sm btn-block' type="submit" value="Post!" name="submit"/> 
             </form>
             <?php
                 if(isset($_POST["submit"])) {
