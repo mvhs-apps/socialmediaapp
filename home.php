@@ -53,7 +53,8 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
                 include("feed.php");
                 include("posting.php");
 
-                $posts = getAllPosts($firebase, $user);
+                $posts = feed($firebase, $user);
+                #echo json_encode($posts);
                 postings($posts, $user, $firebase);
                 if(empty($posts)){
                     echo "Your feed is empty";
