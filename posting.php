@@ -40,11 +40,11 @@ function postings($posts, $user, &$firebase){
             }
 
             $userText = "by <a href='$userUrl'>$displayName</a>";
-            if(empty($userText)){
+            if(empty($displayName)){
                 $userText = "";
             }
             $dateText = " <wbr>on $date";
-            if(empty($dateText)){
+            if(empty($date)){
                 $dateText = "";
             }
             $postedText = "Posted $userText $dateText";
