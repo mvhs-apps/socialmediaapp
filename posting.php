@@ -10,10 +10,12 @@ function postings($posts, $user, &$firebase){
 
             $date = readByKey("date", $value);
             
-            $Post = readByKey("body", $value);
+            $backwardsCompat = readByKey("post", $value);
+            $Post = readByKey("body", $value, $backwardsCompat);
             $Post = htmlentities($Post, ENT_QUOTES); // prevent html injection
 
-            $username = readByKey("user", $value);
+            $backwardsCompat = readByKey("username", $value);
+            $username = readByKey("user", $value, $backwardsCompat);
 
             $title = readByKey("head", $value);
             
@@ -21,8 +23,8 @@ function postings($posts, $user, &$firebase){
 
             $data = getUserData($firebase, $username);
 
-            $displayName = readByKey("displayName", $data);
-            
+            $displayName = readByKey("displayName", $data, $username);
+
             # -- logic to change the markdown --
             $userUrl = "#";
             if($username == $user){
