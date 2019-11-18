@@ -1,14 +1,4 @@
 <?php
-function readByKey($key, $array, $else = ""){
-    if(array_key_exists($key, $array)){
-        if($array[$key] == false){
-            return $else;
-        }
-        return $array[$key];
-    }else{
-        return $else;
-    }
-}
 
 function postings($posts, $user, &$firebase){
     sort($posts);

@@ -96,3 +96,14 @@ function readData($file) {
     $json = fopen($file, "r") or die("Unable to open file!");
     return json_decode(fread($json,filesize($file)), true);
 }
+
+function readByKey($key, $array, $else = ""){
+    if(array_key_exists($key, $array)){
+        if($array[$key] == false){
+            return $else;
+        }
+        return $array[$key];
+    }else{
+        return $else;
+    }
+}
