@@ -5,6 +5,7 @@ function postings($posts, $user, &$firebase){
     if(!empty($posts)) {
         //print_r($posts);
         foreach($posts as $key => $value) {
+            #echo json_encode($value);
             # -- get fields from post --
             $image = readByKey("image", $value, "https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg");
 
@@ -22,6 +23,9 @@ function postings($posts, $user, &$firebase){
             $link = readByKey("link", $value);
 
             $data = getUserData($firebase, $username);
+            if(!$data){
+                $data = [];
+            }
 
             $displayName = readByKey("displayName", $data, $username);
 
