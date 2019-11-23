@@ -1,6 +1,9 @@
 <?php
 
 function postings($posts, $user, &$firebase){
+    if(empty($posts)){
+        return null;
+    }
     sort($posts);
     if(!empty($posts)) {
         //print_r($posts);
