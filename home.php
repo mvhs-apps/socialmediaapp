@@ -24,7 +24,7 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
             include('navbar.php');
         ?>
         <h4 class="alert alert-info alert-dismissible fade show" role="alert">
-            Welcome, <strong><?php echo getUserData($firebase, $user)["displayName"]; ?></strong>
+            Welcome, <strong><?php echo readByKey("displayName", getUserData($firebase, $user), $user); ?></strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </h4>
         <div class="content">
