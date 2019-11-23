@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <?php
 include('firebase.php');
-include('navbar.php');
 include_once('includes.php');
 $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 session_start();
+if(isset($_POST["logout"])){
+    $_SESSION["user"] = "invalid";
+}
 ?>
 <html>
-<head>
-    <link href="general.css" rel="stylesheet">
-</head>
-
-<body>
-    <form action="index.php" method="post">
+    <head>
+        <link href="general.css" rel="stylesheet">
+    </head>
+    <body>
+        <?php 
+            include('navbar.php');
+        ?>
+        <div class='content'>
+        <form action="index.php" method="post">
         <h1 class="full-width">Register</h1>
-        Username: <input type="text" name="username"/>
+        Username: <input type="text" name="username" required/>
+        Display Name: <input type="text" name="displayName"/>
         Password: <input type="password" name="password"/>
         <input type="submit" name="submitReg"/>
     </form>
@@ -31,9 +37,10 @@ session_start();
         }
         if(isset($_POST["submitReg"])) {
             $username = stripper($_POST["username"]);
+            $displayName = stripper($_POST["displayName"]);
             $password = stripper($_POST["password"]);
             if(!userExist($firebase, $username)) {
-                $result = createAccount($username, $password, genid(), $firebase);
+                $result = createAccount($username, $password, $displayName, $firebase);
                 if(!empty($result)){
                     echo showAlert("Account Creation Successsful", "sucess");
                 }else {
@@ -60,5 +67,6 @@ session_start();
             }
         }
     ?>
-</body>
-</html>
+        </div>
+    <body>
+<html>

@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#444999">
 
   <!-- Navbar brand -->
-  <a class="navbar-brand" href="#">PoliTrix</a>
+  <a class="navbar-brand" href="home.php">PoliTrix</a>
 
   <!-- Collapse button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -45,12 +45,12 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">My Account</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="profile.php">Profile</a>
           <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#" onclick="
             let formData = new FormData();
             formData.append('logout', 'logout');
-            fetch('home.php', {
+            fetch('index.php', {
               method: 'POST', // *GET, POST, PUT, DELETE, etc.
               body: formData,
             });

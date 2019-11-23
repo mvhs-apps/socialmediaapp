@@ -16,15 +16,30 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
 ?>
 <html>
     <head>
-        <link href="general.css" rel="stylesheet">
         <link href="posting.css" rel="stylesheet">
+        <link href="general.css" rel="stylesheet">
     </head>
     <body>
         <?php 
             include('navbar.php');
         ?>
         <div class="content">
-            <h3 class="full-width">News:</h3>
+            <?php 
+                if(isSet($_POST["displayName"])){
+                    $data = [
+                        "displayName" => stripper($_POST["displayName"])
+                    ];
+                    $firebase->update('Logins/' . $user , $data);
+                }
+                $userData = getUserData($firebase, $user);
+            ?>
+            <form class="full-width py-2" action='profile.php' method='POST'>
+                <h3>Update Your Profile:</h3>
+                Display Name:<br/>
+                <input type="text" name="displayName" value="<?php echo readByKey("displayName", $userData, $user); ?>" />
+                <input class='btn btn-primary btn-sm btn-block' type='submit' name='update' value='Save'/>
+            </form>
+            <h3 class="full-width">Your Posts:</h3>
             <div class="posting-container grid">
             <?php
                 if(isset($_POST["remove"])) {
@@ -33,13 +48,10 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
                 }
 
                 include("posting.php");
-                $posts = readData('data.json');
-                sort($posts);
-                if(!empty($posts)) {
-                    foreach($posts as $key => $site){
-                        postings($site, $user, $firebase);
-                    }
-                } else {
+
+                $posts = getAllPosts($firebase, $user);
+                postings($posts, $user, $firebase);
+                if(empty($posts)){
                     echo "You have no posts yet!<br>";
                     echo "Your posts will show up here";
                 }

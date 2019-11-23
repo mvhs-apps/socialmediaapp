@@ -2,21 +2,25 @@
 include_once('includes.php');
 
 function stripper($string ){//is nosql injection a thing? Do we need this? A little overzealous ==> no spaces or punctuation
-    $res = preg_replace("/[^a-zA-Z ]/", "", $string);
+
+    
+    $res = preg_replace("/[^a-zA-Z0-9 ]/", "", $string);
     return $res;
 }
 
-function createAccount($username, $password, $userid, &$firebase) {
+function createAccount($username, $password, $displayName, &$firebase) {
     // https://www.php.net/manual/en/function.password-hash.php
     if(empty($username)){
         return null;
     }
+    $userid = genid();
     $hash = password_hash($password, PASSWORD_DEFAULT);
     echo $hash;
     $user = [
         'username' => $username,
         'password' => $hash,
-        'userid' => $userid
+        'userid' => $userid,
+        'displayName' => $displayName
     ];
     $firebase->set('Logins/' . $username, $user);
     return $user;
@@ -24,6 +28,10 @@ function createAccount($username, $password, $userid, &$firebase) {
 
 function getAllLogins(&$firebase) {
     return json_decode($firebase->get('Logins'), true);
+}
+
+function getUserData(&$firebase, $user){
+    return json_decode($firebase->get('Logins/' . $user), true);
 }
 
 function userExist(&$firebase, $username) {
@@ -66,8 +74,11 @@ function getCurrentDate() {
 
 function submitPost(&$firebase, $username, $post) {
     $fpost = [
-        'username' => $username,
-        'post' => $post,
+        'image' => "",
+        'link' => "",
+        'head' => "",
+        'user' => $username,
+        'body' => $post,
         'date' => getCurrentDate()
     ];
     $firebase->set('Posts/' . $username . '/' . genid(), $fpost);
@@ -83,5 +94,16 @@ function removePost(&$firebase, $num, $user) {
 
 function readData($file) {
     $json = fopen($file, "r") or die("Unable to open file!");
-    return json_decode(fread($json,filesize('data.txt')), true);
+    return json_decode(fread($json,filesize($file)), true);
+}
+
+function readByKey($key, $array, $else = ""){
+    if(array_key_exists($key, $array)){
+        if($array[$key] == false){
+            return $else;
+        }
+        return $array[$key];
+    }else{
+        return $else;
+    }
 }
