@@ -36,7 +36,7 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
             <form class="full-width py-2" action='profile.php' method='POST'>
                 <h3>Update Your Profile:</h3>
                 Display Name:<br/>
-                <input type="text" name="displayName" value="<?php echo $userData["displayName"] ?>" />
+                <input type="text" name="displayName" value="<?php echo readByKey("displayName", $userData, $user); ?>" />
                 <input class='btn btn-primary btn-sm btn-block' type='submit' name='update' value='Save'/>
             </form>
             <h3 class="full-width">Your Posts:</h3>
