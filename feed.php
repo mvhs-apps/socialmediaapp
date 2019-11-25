@@ -4,8 +4,10 @@ function feed(&$firebase, $user){
     $posts = [];
 
     $yourPosts = getAllPosts($firebase, $user);
-    foreach($yourPosts as $key => $value){
-        $posts[] = $value;
+    if(!empty($yourPosts)){
+        foreach($yourPosts as $key => $value){
+            $posts[$key] = $value;
+        }
     }
 
     $users = getAllLogins($firebase);

@@ -4,7 +4,7 @@ function postings($posts, $user, &$firebase){
     if(empty($posts)){
         return null;
     }
-    sort($posts);
+    #sort($posts);
     if(!empty($posts)) {
         //print_r($posts);
         foreach($posts as $key => $value) {
@@ -51,7 +51,7 @@ function postings($posts, $user, &$firebase){
                 $postedText = "";
             }
 
-            $deleteForm = "<form class='remove' action='home.php' method='POST'>
+            $deleteForm = "<form class='remove' action='{$_SERVER["PHP_SELF"]}' method='POST'>
                 <input type='hidden' name='whichpost' value='$key'/>
                 <input class='butt btn btn-danger btn-sm btn-block' type='submit' name='remove' value='Remove this post'/>
             </form>";
