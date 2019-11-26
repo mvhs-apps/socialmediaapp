@@ -41,7 +41,6 @@ if($user == "invalid" || $user == "" || isset($_POST["logout"])) {
                 }
             ?>
 
-            <h3 class="full-width">Your Posts:</h3>
             <div class="posting-container grid">
             <?php
                 if(isset($_POST["remove"])) {

@@ -79,7 +79,8 @@ function submitPost(&$firebase, $username, $post) {
         'head' => "",
         'user' => $username,
         'body' => $post,
-        'date' => getCurrentDate()
+        'date' => getCurrentDate(),
+        'likes' => 0,
     ];
     $firebase->set('Posts/' . $username . '/' . genid(), $fpost);
 }
@@ -98,12 +99,12 @@ function readData($file) {
 }
 
 function readByKey($key, $array, $else = ""){
-    if(array_key_exists($key, $array)){
-        if($array[$key] == false){
-            return $else;
-        }
+    //echo "REAL TEST: ";echo array_key_exists($key, $array);
+    //echo "KEY TEST: $key <br/>";
+    if(array_key_exists($key, $array)) {
         return $array[$key];
     }else{
+        //echo "FAILED";
         return $else;
     }
 }

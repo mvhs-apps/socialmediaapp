@@ -9,6 +9,7 @@ function postings($posts, $user, &$firebase){
         //print_r($posts);
         foreach($posts as $key => $value) {
             #echo json_encode($value);
+            //print_r($value);
             # -- get fields from post --
             $image = readByKey("image", $value, "https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg");
 
@@ -26,6 +27,9 @@ function postings($posts, $user, &$firebase){
             $link = readByKey("link", $value);
 
             $data = getUserData($firebase, $username);
+
+            $likes = readByKey("likes", $value, "dfsdfds");
+
             if(!$data){
                 $data = [];
             }
@@ -77,6 +81,7 @@ function postings($posts, $user, &$firebase){
                             $deleteForm
                         </div>
                     </div>
+                    Likes: $likes
                 </div>
             ";
 

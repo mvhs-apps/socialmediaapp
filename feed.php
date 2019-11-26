@@ -32,6 +32,7 @@ function feed(&$firebase, $user){
             $posts[] = $value;
         }
     }
+
     #echo json_encode($newsFlatter);
 
     $yourPosts = getAllPosts($firebase, $user);
