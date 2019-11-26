@@ -3,11 +3,6 @@
 function feed(&$firebase, $user){
     $posts = [];
 
-    $yourPosts = getAllPosts($firebase, $user);
-    foreach($yourPosts as $key => $value){
-        $posts[] = $value;
-    }
-
     $users = getAllLogins($firebase);
     $otherPeoplesPosts = [];
     foreach($users as $value){
@@ -39,6 +34,12 @@ function feed(&$firebase, $user){
     }
     #echo json_encode($newsFlatter);
 
+    $yourPosts = getAllPosts($firebase, $user);
+    if(!empty($yourPosts)) {
+        foreach ($yourPosts as $key => $value) {
+            $posts[] = $value;
+        }
+    }
 
     return $posts;
 }
