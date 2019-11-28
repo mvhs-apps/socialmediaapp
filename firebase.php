@@ -99,9 +99,12 @@ function readData($file) {
 }
 
 function readByKey($key, $array, $else = ""){
-    //echo "REAL TEST: ";echo array_key_exists($key, $array);
-    //echo "KEY TEST: $key <br/>";
-    if(array_key_exists($key, $array)) {
+    if(array_key_exists($key, $array)){
+        //echo "REAL TEST: ";echo array_key_exists($key, $array);
+        //echo "KEY TEST: $key <br/>";
+        if($array[$key] == false){
+            return $else;
+        }
         return $array[$key];
     }else{
         //echo "FAILED";
